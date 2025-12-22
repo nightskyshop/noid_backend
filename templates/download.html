@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>사진 다운로드</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      img {
+        max-width: 90vw;
+        max-height: 70vh;
+        border-radius: 12px;
+        margin-bottom: 20px;
+      }
+
+      a.button {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #ffffff;
+        color: #000;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+      }
+
+      a.button:hover {
+        background: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>이미지를 다운로드하세요!</h2>
+
+      <img src="{{ image_path }}" alt="photo" />
+
+      <br />
+
+      <a class="button" href="./download_image?session={{ session }}" download>
+        다운로드
+      </a>
+    </div>
+  </body>
+</html>
