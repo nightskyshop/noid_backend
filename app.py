@@ -73,7 +73,7 @@ def upload():
     if file.filename == '':
         return {'result': False, 'message': '파일명이 없습니다.'}, 400
     
-    upload = request.args.get("upload") == "true"
+    upload = request.form.get("upload") == "true"
 
     if not upload:
         upload = False
