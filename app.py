@@ -23,11 +23,12 @@ def main():
 
     per_page = 12  # 한 페이지당 사진 수
 
-    total = db_session.query(Photo).count()
+    total = db_session.query(Photo).filter(Photo.upload ==True).count()
     total_pages = ceil(total / per_page)
 
     photos = (
         db_session.query(Photo)
+        .filter(Photo.upload == True)
         .order_by(desc(Photo.createdAt))
         .offset((page - 1) * per_page)
         .limit(per_page)
@@ -103,13 +104,14 @@ def likes():
 
     photos = (
         db_session.query(Photo)
+        .filter(Photo.upload == True)
         .order_by(Photo.like.desc(), Photo.createdAt.desc())
         .offset((page - 1) * per_page)
         .limit(per_page)
         .all()
     )
 
-    total = db_session.query(Photo).count()
+    total = db_session.query(Photo).filter(Photo.upload == True).count()
     total_pages = (total + per_page - 1) // per_page
 
     return render_template(
