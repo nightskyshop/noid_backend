@@ -3,18 +3,101 @@
   <head>
     <meta charset="UTF-8" />
     <title>NOID Gallery</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+
+      @font-face {
+        font-family: 'PartialSans';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+          font-family: 'Escoredream';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-1Thin.woff') format('woff');
+          font-weight: 100;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: 'Escoredream';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');
+          font-weight: 200;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: 'Escoredream';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+          font-weight: 300;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: 'Escoredream';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
+          font-weight: normal;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: 'Escoredream';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+          font-weight: 500;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: 'Escoredream';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');
+          font-weight: 600;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: 'Escoredream';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff') format('woff');
+          font-weight: 700;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: 'Escoredream';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') format('woff');
+          font-weight: 800;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: 'Escoredream';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');
+          font-weight: 900;
+          font-display: swap;
+      }
+
       body {
-        font-family: Arial, sans-serif;
+        font-family: Escoredream;
         margin: 0;
         padding: 20px;
-        background: #f5f5f5;
+        background: url('/static/images/background.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 95px;
+      }
+
+      a {
+        text-decoration: none;
+        color: auto;
       }
 
       h1 {
         text-align: center;
-        margin-bottom: 30px;
+        font-family: PartialSans;
+        color: #FD7979;
+        font-weight: normal;
+        margin-bottom: 20px;
+        margin-top: 0;
       }
 
       .top-buttons {
@@ -25,19 +108,20 @@
 
       .like-button {
         padding: 10px 18px;
-        background: #ff4d4f;
-        color: white;
+        background: #fff5;
+        border: 1px solid #fffa;
+        color: #FF3F32;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         text-decoration: none;
         border-radius: 20px;
         font-size: 14px;
         font-weight: bold;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         transition: transform 0.15s, box-shadow 0.15s;
       }
 
       .like-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
       }
 
       .gallery {
@@ -50,7 +134,7 @@
 
       .photo-card {
         background: white;
-        border-radius: 8px;
+        border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         text-align: center;
@@ -60,6 +144,7 @@
       .photo-card img {
         width: 100%;
         display: block;
+        border-radius: 20px;
       }
 
       .photo-card .date {
@@ -69,46 +154,192 @@
       }
 
       .pagination {
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        width: 100vw;
         display: flex;
         justify-content: center;
         gap: 8px;
-        margin: 30px 0;
         flex-wrap: wrap;
       }
 
       .pagination a {
         padding: 6px 12px;
-        border: 1px solid #ccc;
         text-decoration: none;
         color: #333;
-        border-radius: 4px;
-        background: white;
+        border-radius: 30px;
+        background: #fff5;
+        border: 1px solid #fffa;
+        transition: background 0.15s;
       }
 
       .pagination a:hover {
-        background: #eee;
+        background: #fffa;
       }
 
       .pagination .active {
-        background: #333;
+        background: #000a;
         color: white;
         pointer-events: none;
-        border-color: #333;
+        border-color: #000a;
       }
+
+      .pagination-inner {
+        display: flex;
+        background: #fff5;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 1000px;
+        gap: 5px;
+        border: 1px solid #fffa;
+      }
+
+      .popup {
+        width: calc(100% - 40px);
+        height: calc(100% - 20px);
+        max-width: 480px;
+        max-height: 700px;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        background: #fffa;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        margin-top: 20px;
+        margin: 0px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px 20px 0 0;
+        z-index: 1000;
+        display: block;
+        bottom: -200%;
+        transition: bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0px 0px 10px #0002;
+        touch-action: none;
+      }
+
+      .popup.dragging {
+        transition: none;
+      }
+
+      .popup-handle {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: grab;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+      }
+
+      .popup-handle::after {
+        content: '';
+        width: 40px;
+        height: 5px;
+        background: #0003;
+        border-radius: 3px;
+      }
+
+      .popup embed {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px 20px 0 0;
+      }
+
+      #popupbg {
+        background: #fff5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        display: none;
+      }
+
+      footer {
+        width: calc(100%);
+        text-align: center;
+        padding: 20px 0px 0px 0px;
+        color: #FD7979;
+      }
+
     </style>
+
+    <script>
+      const popup = document.querySelector ? null : null; // placeholder
+      let startY = 0;
+      let currentY = 0;
+      let isDragging = false;
+
+      function openpopup(session) {
+        console.log(`/photo?session=${session}`)
+        document.querySelector(".popup embed").src = `/photo?session=${session}`
+        document.querySelector("#popupbg").style.display = "block"
+        document.querySelector(".popup").style.bottom = "0px"
+        document.querySelector(".popup").style.transform = "translateY(0)"
+        document.querySelector('body').style.overflow = 'hidden'
+      }
+
+      function closepopup() {
+        const popup = document.querySelector(".popup")
+        popup.style.bottom = "-200%"
+        popup.style.transform = "translateY(0)"
+        document.querySelector("#popupbg").style.display = "none"
+        document.querySelector('body').style.overflow = 'auto'
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.querySelector(".popup")
+        const handle = document.querySelector(".popup-handle")
+
+        handle.addEventListener('touchstart', (e) => {
+          startY = e.touches[0].clientY
+          isDragging = true
+          popup.classList.add('dragging')
+        }, { passive: true })
+
+        handle.addEventListener('touchmove', (e) => {
+          if (!isDragging) return
+          currentY = e.touches[0].clientY
+          let deltaY = currentY - startY
+          if (deltaY < 0) deltaY = 0 // 위로는 안 감
+          popup.style.transform = `translateY(${deltaY}px)`
+        }, { passive: true })
+
+        handle.addEventListener('touchend', () => {
+          if (!isDragging) return
+          isDragging = false
+          popup.classList.remove('dragging')
+          const deltaY = currentY - startY
+          if (deltaY > 150) {
+            closepopup()
+          } else {
+            popup.style.transform = "translateY(0)"
+          }
+        })
+      })
+    </script>
   </head>
   <body>
-    <h1>NOID Photo Gallery</h1>
+    <h1><span style="color: black;">NOID</span><br>Photo Gallery</h1>
 
     <div class="top-buttons">
-      <a href="/likes" class="like-button">🔥 좋아요 순 보기</a>
+      <a href="/likes" class="like-button">❤️ 좋아요 순 보기</a>
     </div>
 
     <div class="gallery">
       {% for photo in photos %}
       <div
         class="photo-card"
-        onclick="location.href='/photo?session={{ photo.id }}'"
+        onclick="openpopup('{{ photo.id }}')"
         style="cursor: pointer"
       >
         <img src="{{ photo.photoUrl }}" alt="photo" />
@@ -118,6 +349,7 @@
     </div>
 
     <div class="pagination">
+      <div class="pagination-inner">
       {% if page > 1 %}
       <a href="/?page={{ page - 1 }}">이전</a>
       {% endif %} {% for p in range(1, total_pages + 1) %}
@@ -127,6 +359,14 @@
       {% endfor %} {% if page < total_pages %}
       <a href="/?page={{ page + 1 }}">다음</a>
       {% endif %}
+      </div>
     </div>
+
+    <div id="popup" class="popup">
+      <div class="popup-handle"></div>
+      <embed src="/photo?session=3fb43d8d-6fe0-47e8-a929-0ffa8c49cd13">
+    </div>
+    <div id="popupbg" onclick="closepopup()"></div>
+    <footer>©NOID<br>Designed by Jiheum</footer>
   </body>
 </html>

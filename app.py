@@ -21,7 +21,7 @@ db_session = Session()
 def main():
     page = request.args.get("page", 1, type=int)
 
-    per_page = 12  # 한 페이지당 사진 수
+    per_page = 10  # 한 페이지당 사진 수
 
     total = db_session.query(Photo).filter(Photo.upload ==True).count()
     total_pages = ceil(total / per_page)
@@ -86,7 +86,7 @@ def upload():
 
     photo = Photo(
         id=session_id,
-        photoUrl=f"http://localhost:8000/get_image?session={session_id}",
+        photoUrl=f"http://download.noid.my/get_image?session={session_id}",
         createdAt=datetime.datetime.utcnow(),
         like=0,
         upload=upload

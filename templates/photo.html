@@ -14,9 +14,8 @@
       }
 
       body {
-        background: #f5f5f5;
+        background: white;
         min-height: 100vh;
-        display: flex;
         justify-content: center;
         align-items: center;
       }
@@ -24,19 +23,18 @@
       .photo-container {
         width: 100%;
         max-width: 480px;
-        background: #fff;
-        border-radius: 12px;
+        background: transparent;
         overflow: hidden;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       }
 
       .photo-image img {
         width: 100%;
         display: block;
+        border-radius: 20px;
       }
 
       .photo-info {
-        padding: 16px;
+        padding: 10px;
       }
 
       .photo-date {
@@ -59,16 +57,18 @@
 
       .like-btn {
         padding: 8px 14px;
-        background: #ff4d4f;
-        color: #fff;
+        border: 2px solid #ff4d4f;
+        background: none;
+        color: #ff4d4f;
         border-radius: 20px;
-        border: none;
         cursor: pointer;
         font-size: 14px;
+        transition: background 0.15s;
       }
 
       .like-btn:hover {
-        background: #e84344;
+        background: #ff4d4f;
+        color: #fff;
       }
 
       .like-count {
@@ -76,20 +76,19 @@
         color: #333;
       }
 
-      .photo-actions {
-        padding: 16px;
-        border-top: 1px solid #eee;
-        text-align: center;
-      }
-
       .back-btn {
         display: inline-block;
         padding: 10px 16px;
         background: #000;
         color: #fff;
-        border-radius: 8px;
+        border-radius: 10px;
         text-decoration: none;
         font-size: 14px;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        border: 1px solid #fffa;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -106,14 +105,11 @@
         </div>
 
         <div class="like-box">
-          <button class="like-btn" onclick="likePhoto()">❤️ 좋아요</button>
-          <div class="like-count" id="like-count">{{ photo.like }}</div>
+          <button class="like-btn" onclick="likePhoto()">❤️ 좋아요 <span id="like-count">{{ photo.like }}</span></button>
         </div>
       </div>
-
-      <div class="photo-actions">
-        <a href="/" class="back-btn">← 목록으로</a>
-      </div>
+        <a onclick="parent.closepopup()" class="back-btn">← 목록으로</a>
+      
     </div>
 
     <script>
